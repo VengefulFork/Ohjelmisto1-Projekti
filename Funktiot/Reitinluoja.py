@@ -14,7 +14,7 @@ yhteys = mariadb.connect(
 def reitinluoja ():
     kentät_icao = ("EFHK", "EFKT", "ESSA", "ENGM", "ENTC", "BIKF", "EGPD", "EGLL", "LFPG", "LEMD",
                    "LIRF", "LSZH", "EDDB", "EPWA", "EKBI", "EVRA", "LOWW", "LRBS", "LQSA", "LGAV", "EHAM")
-
+    # RNG aloitus ja lopetus kenttien arpomista varten.
     aloitus_kenttä = kentät_icao[random.randint(0, 20)]
     lopetus_kenttä = kentät_icao[random.randint(0, 20)]
     # Testataan ovatko aloitus_kenttä ja lopetus_kenttä samat ja jos on niin arvotaan uusi lopetus_kenttä
