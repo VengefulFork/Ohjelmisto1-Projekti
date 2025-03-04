@@ -31,11 +31,10 @@ def reitinluoja ():
 
     curs.execute(sql_lopetus)
     lopetus_kenttä = curs.fetchall()
-
+    # Testausta varten
     # for i in aloitus_kenttä :
     #     print(f"Pelaaja aloitus kenttäsi on {i[0]}")
     # for a in lopetus_kenttä :
     #     print(f"Ja Maalisi on {a[0]}. \nOnnea matkaan")
     return aloitus_kenttä , lopetus_kenttä
 
-reitinluoja()
