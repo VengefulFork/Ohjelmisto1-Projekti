@@ -4,7 +4,7 @@ import random
 yhteys = mariadb.connect(
         host='localhost',
         port= 3306,
-        database= 'projekti',
+        database= 'peli_projekti',
         user= 'player',
         password= '12345',
         autocommit=True
@@ -38,3 +38,4 @@ def reitinluoja ():
     #     print(f"Ja Maalisi on {a[0]}. \nOnnea matkaan")
     return aloitus_kenttä , lopetus_kenttä
 
+reitinluoja()
