@@ -9,11 +9,11 @@ tk_yhteys = mariadb.connect(
         autocommit=True
 )
 
-def lentäminen():
+def lentäminen(pelaajan_sijainti):
     # SQL Komentoja varten
     curs = tk_yhteys.cursor()
 
-    pelaajan_sijainti = "ESSA"
+
     # Haetaan kaikki lentoyhtydet joita kentällä jolla pelaaja tällä hetkellä on.
     sql = f"SELECT lopetuspiste FROM airport, yhteys WHERE airport.ident = yhteys.aloituspiste AND ident = '{pelaajan_sijainti}'"
     sql2 = f"SELECT aloituspiste FROM airport, yhteys WHERE airport.ident = yhteys.lopetuspiste AND ident = '{pelaajan_sijainti}'"
@@ -28,11 +28,16 @@ def lentäminen():
 
     valittu_kenttä = input("\nAnna kenttä jolle haluat lentää = ").upper()
     # Testataan onko pelaajan valitsema kenttälle olemassa yhteyksissä jos on siirretään pelaaja sinne.
+
     for i in yhteydet :
         if valittu_kenttä in i :
             pelaajan_sijainti = valittu_kenttä
+            print(f"Pelaajan nykyinen sijainti {pelaajan_sijainti}")
 
-    print(f"Pelaajan nykyinen sijainti {pelaajan_sijainti}")
+
+
     return
 
-lentäminen()
+pelaajan_sijainti = "LOWW"
+
+lentäminen(pelaajan_sijainti)
