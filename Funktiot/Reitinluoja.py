@@ -28,6 +28,8 @@ def reitinluoja ():
 
     curs.execute(sql_aloitus)
     aloitus_kenttä = curs.fetchall()
+    for i in aloitus_kenttä :
+        aloitus_kenttä = i
 
     curs.execute(sql_lopetus)
     lopetus_kenttä = curs.fetchall()
