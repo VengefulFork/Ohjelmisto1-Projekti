@@ -21,8 +21,8 @@ def reitinluoja ():
     if aloitus_kenttä == lopetus_kenttä :
         lopetus_kenttä = kentät_icao[random.randint(0, 20)]
     # sql haut
-    sql_aloitus = f"SELECT name FROM airport WHERE ident = '{aloitus_kenttä}'"
-    sql_lopetus = f"SELECT name FROM airport WHERE ident = '{lopetus_kenttä}'"
+    sql_aloitus = f"SELECT name, ident FROM airport WHERE ident = '{aloitus_kenttä}'"
+    sql_lopetus = f"SELECT name, ident FROM airport WHERE ident = '{lopetus_kenttä}'"
 
     curs = yhteys.cursor()
 
