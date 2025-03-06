@@ -1,4 +1,5 @@
 import mariadb
+from Etäisyydet import koordinaatit
 
 
 tk_yhteys = mariadb.connect(
@@ -34,10 +35,11 @@ def lentäminen(pelaajan_sijainti):
     for rivi in kentät_nimet :
         print (f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 
+
     loop = 1
 
     while loop != 3 :
-
+        # Jos pelaajan antama ICAO koodi on virheellinen tulostetaan uudestaan sijainti ja sieltä olevat kenttä yhteydet
         if loop == 2 :
             print("\nAnnoit Väärän ICAO koodin kokeile uudestaan")
             print(f"\nOlet kentällä {pelaajan_sijainti[0]} josta valittavat yhteydet ovat : ")
@@ -45,7 +47,8 @@ def lentäminen(pelaajan_sijainti):
                 print(f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 
         valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper()
-        # Testataan onko pelaajan valitsema kenttälle olemassa yhteyksissä jos on siirretään pelaaja sinne.
+        # Käydään läpi kaikki monikot jota lista kentät_nimet sisältää ja jos löydetään pelaajan syöttämä icao koodi
+        # päivitetään pelaaja sijainti annettuun icao koodiin
         if loop == 1 or 2:
             for i in kentät_nimet :
                 if valittu_kenttä in i :
@@ -55,7 +58,8 @@ def lentäminen(pelaajan_sijainti):
                     # print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
                     break
 
-
+                # Jos pelaajan antamaa ICAO koodia ei löydy monikosta i muutetaan loop muuttujan arvo 2 jotta ylempänä oleva
+                # virhe ilmoitus tulostuu.
                 elif valittu_kenttä not in i :
                     loop = 2
 
