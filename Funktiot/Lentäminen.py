@@ -1,5 +1,6 @@
 import mariadb
 
+
 tk_yhteys = mariadb.connect(
         host='localhost',
         port= 3306,
@@ -61,13 +62,6 @@ def lentäminen(pelaajan_sijainti):
         continue
 
 
-    # valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper()
-    # # Testataan onko pelaajan valitsema kenttälle olemassa yhteyksissä jos on siirretään pelaaja sinne.
-    #
-    # for i in kentät_nimet :
-    #     if valittu_kenttä in i :
-    #         pelaajan_uusi_sijainti= i
-    #         print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
 
 
 
