@@ -52,7 +52,7 @@ def lentäminen(pelaajan_sijainti):
 
                     pelaajan_uusi_sijainti = i
                     loop = 3
-                    print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
+                    # print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
                     break
 
 
