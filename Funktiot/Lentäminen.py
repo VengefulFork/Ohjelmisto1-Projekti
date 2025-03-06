@@ -33,13 +33,41 @@ def lentäminen(pelaajan_sijainti):
     for rivi in kentät_nimet :
         print (f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 
-    valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper()
-    # Testataan onko pelaajan valitsema kenttälle olemassa yhteyksissä jos on siirretään pelaaja sinne.
+    loop = 1
 
-    for i in kentät_nimet :
-        if valittu_kenttä in i :
-            pelaajan_uusi_sijainti= i
-            print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
+    while loop != 3 :
+
+        if loop == 2 :
+            print("\nAnnoit Väärän ICAO koodin kokeile uudestaan")
+            print(f"\nOlet kentällä {pelaajan_sijainti[0]} josta valittavat yhteydet ovat : ")
+            for rivi in kentät_nimet:
+                print(f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
+
+        valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper()
+        # Testataan onko pelaajan valitsema kenttälle olemassa yhteyksissä jos on siirretään pelaaja sinne.
+        if loop == 1 or 2:
+            for i in kentät_nimet :
+                if valittu_kenttä in i :
+
+                    pelaajan_uusi_sijainti = i
+                    loop = 3
+                    print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
+                    break
+
+
+                elif valittu_kenttä not in i :
+                    loop = 2
+
+        continue
+
+
+    # valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper()
+    # # Testataan onko pelaajan valitsema kenttälle olemassa yhteyksissä jos on siirretään pelaaja sinne.
+    #
+    # for i in kentät_nimet :
+    #     if valittu_kenttä in i :
+    #         pelaajan_uusi_sijainti= i
+    #         print(f"Pelaajan uusi sijainti {pelaajan_uusi_sijainti[0]} {pelaajan_uusi_sijainti[1]}")
 
 
 

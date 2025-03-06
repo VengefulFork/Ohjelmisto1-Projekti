@@ -14,5 +14,5 @@ while maali[0][1] != pelaajan_sijainti[1] :
             ensimmäinen_toisto = False
         pelaajan_sijainti = lentäminen(pelaajan_sijainti)
 
-print("Trumpetit soi koska voitit pelin")
+print("\nTrumpetit soi koska voitit pelin")
 
