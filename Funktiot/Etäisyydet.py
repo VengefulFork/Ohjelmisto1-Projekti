@@ -20,7 +20,7 @@ def koordinaatit (pelaajan_sijainti, icao1):
     sql2 = f"SELECT latitude_deg, longitude_deg FROM airport WHERE ident = '{icao1}'"
     curs.execute(sql2)
     tulos2 = curs.fetchall()
-    k_etäisyys = distance.distance(tulos, tulos2 ).km
+    k_etäisyys = round(distance.distance(tulos, tulos2 ).km)
 
     return k_etäisyys
 
