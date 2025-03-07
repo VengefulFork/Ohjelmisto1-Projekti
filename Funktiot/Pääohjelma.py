@@ -30,13 +30,15 @@ while maali[0][1] != pelaajan_sijainti[1] :
         lennon_tiedot = lennon_tiedot_laskin(matka, pelaajan_kone)
 
         print(f"Matkasi kentältä {pelaajan_vanha_sijainti[0]} kentälle {pelaajan_sijainti[0]}\n"
-              f"oli {matka} kilometria ja valitsemallasi koneella {pelaajan_kone['malli']} siihen meni {lennon_tiedot[0]} minuuttia ja tuotti {lennon_tiedot[1]} kiloa hiilidioksidia")
+              f"oli {matka} kilometria ja valitsemallasi koneella {pelaajan_kone['malli']} siihen meni {lennon_tiedot[0]}"
+              f" minuuttia ja tuotti {lennon_tiedot[1]} kiloa hiilidioksidia")
+
 
         kokonaan_kuljettu_matka += matka
         kokonais_aika += lennon_tiedot[0]
         kokonais_co2  += lennon_tiedot[1]
 
-        print(kokonais_co2, kokonais_aika, kokonaan_kuljettu_matka)
+
 
 
 
