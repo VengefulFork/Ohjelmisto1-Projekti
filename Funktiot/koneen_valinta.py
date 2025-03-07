@@ -1,14 +1,14 @@
 from lentokoneet import lentokonetyypit
 
 def koneen_valitsin (lentokonetyypit) :
-    print(f"Valittavat koneet ovat : ")
+    print(f"Koneet joilla voit lentää : ")
     b = 0
     for a in lentokonetyypit :
         b += 1
-        print(f"{b}. {a['malli']}, {a['max_nopeus_kmh']} km/h")
+        print(f"{b}. {a['malli']} jonka matkanopeus on {a['max_nopeus_kmh']} km/h")
     loop = True
     while loop :
-        komento = input("Valitse haluamasi kone syöttämällä joko 1 tai 2 = ")
+        komento = input("Valitse haluamasi kone syöttämällä joko 1 tai 2 = ").replace(" ", "")
         if komento == "1" :
             pelaajan_kone = lentokonetyypit[0]
             loop = False
@@ -18,8 +18,7 @@ def koneen_valitsin (lentokonetyypit) :
         else :
             print("Virheellinen komento kokeile uudestaan")
 
-    print(pelaajan_kone)
     return pelaajan_kone
 
-koneen_valitsin(lentokonetyypit)
+
 
