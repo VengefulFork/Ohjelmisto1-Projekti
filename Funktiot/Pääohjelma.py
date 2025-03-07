@@ -1,13 +1,17 @@
 from Reitinluoja import reitinluoja
 from Lentäminen import lentäminen
+from lentokoneet import lentokonetyypit
+from koneen_valinta import koneen_valitsin
 from Etäisyydet import koordinaatit
-from Matkanlaskija import aika
+from Matkanlaskija import lennon_tiedot_laskin
 
 
 maali = reitinluoja()[1]
 pelaajan_sijainti = reitinluoja()[0]
 matka = int
 kokonaan_kuljettu_matka = 0
+kokonais_aika = 0
+kokonais_co2 = 0
 ensimmäinen_toisto = True
 
 while maali[0][1] != pelaajan_sijainti[1] :
@@ -20,13 +24,19 @@ while maali[0][1] != pelaajan_sijainti[1] :
         pelaajan_vanha_sijainti = pelaajan_sijainti
         pelaajan_sijainti = lentäminen(pelaajan_sijainti)
 
+        pelaajan_kone = koneen_valitsin(lentokonetyypit)
+
         matka = koordinaatit(pelaajan_vanha_sijainti, pelaajan_sijainti)
-        lennon_kesto = aika(matka)
+        lennon_tiedot = lennon_tiedot_laskin(matka, pelaajan_kone)
 
         print(f"Matkasi kentältä {pelaajan_vanha_sijainti[0]} kentälle {pelaajan_sijainti[0]}\n"
-              f"oli {matka} kilometria ja siihen meni {lennon_kesto} minuuttia")
+              f"oli {matka} kilometria ja valitsemallasi koneella {pelaajan_kone['malli']} siihen meni {lennon_tiedot[0]} minuuttia ja tuotti {lennon_tiedot[1]} kiloa hiilidioksidia")
 
         kokonaan_kuljettu_matka += matka
+        kokonais_aika += lennon_tiedot[0]
+        kokonais_co2  += lennon_tiedot[1]
+
+        print(kokonais_co2, kokonais_aika, kokonaan_kuljettu_matka)
 
 
 
