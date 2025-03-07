@@ -46,7 +46,7 @@ def lentäminen(pelaajan_sijainti):
             for rivi in kentät_nimet:
                 print(f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 
-        valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper()
+        valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper().replace(" ", "")
         # Käydään läpi kaikki monikot jota lista kentät_nimet sisältää ja jos löydetään pelaajan syöttämä icao koodi
         # päivitetään pelaaja sijainti annettuun icao koodiin
         if loop == 1 or 2:
