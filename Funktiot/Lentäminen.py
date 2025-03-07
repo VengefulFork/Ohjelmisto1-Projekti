@@ -1,5 +1,5 @@
 import mariadb
-from Etäisyydet import koordinaatit
+# from Etäisyydet import koordinaatit
 
 
 tk_yhteys = mariadb.connect(
@@ -31,7 +31,7 @@ def lentäminen(pelaajan_sijainti):
         kentät_nimet.extend(curs.fetchall())
 
     # Tulostetaan yhteydet pelaajalle
-    print(f"Olet kentällä {pelaajan_sijainti[0]} josta valittavat yhteydet ovat : ")
+    print(f"\nOlet kentällä {pelaajan_sijainti[0]} josta valittavat yhteydet ovat : ")
     for rivi in kentät_nimet :
         print (f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 
@@ -64,6 +64,7 @@ def lentäminen(pelaajan_sijainti):
                     loop = 2
 
         continue
+
 
 
 
