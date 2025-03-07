@@ -1,4 +1,5 @@
 import mariadb
+
 # from Etäisyydet import koordinaatit
 
 
