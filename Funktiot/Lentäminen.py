@@ -32,7 +32,7 @@ def lentäminen(pelaajan_sijainti):
         kentät_nimet.extend(curs.fetchall())
 
     # Tulostetaan yhteydet pelaajalle
-    print(f"\nOlet kentällä {pelaajan_sijainti[0]} josta valittavat yhteydet ovat : ")
+    print(f"\nOlet kentällä {pelaajan_sijainti[0]}, {pelaajan_sijainti[1]} josta valittavat yhteydet ovat : ")
     for rivi in kentät_nimet :
         print (f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 
@@ -43,7 +43,7 @@ def lentäminen(pelaajan_sijainti):
         # Jos pelaajan antama ICAO koodi on virheellinen tulostetaan uudestaan sijainti ja sieltä olevat kenttä yhteydet
         if loop == 2 :
             print("\nAnnoit Väärän ICAO koodin kokeile uudestaan")
-            print(f"\nOlet kentällä {pelaajan_sijainti[0]} josta valittavat yhteydet ovat : ")
+            print(f"\nOlet kentällä {pelaajan_sijainti[0]}, {pelaajan_sijainti[1]} josta valittavat yhteydet ovat : ")
             for rivi in kentät_nimet:
                 print(f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
 

@@ -25,9 +25,6 @@ def kartta ():
               f"\n     LEMD                 LGAV               "
               f"\n         X               X                   "
               f"\n          XXXXXXXXXXXXXXX                    "
-              f"\n"
-
               ).replace("X", "-")
     print(kartta)
     return
-kartta()

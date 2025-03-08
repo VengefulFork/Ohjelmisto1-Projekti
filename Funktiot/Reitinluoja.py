@@ -49,7 +49,7 @@ def reitinluoja ():
         for i in testaus_yhteydet :
             # Jos aloitus kenttältä on yhteys lopetus kentälle arvotaan uusi aloitus kenttä tai jos ne ovat sama kenttä arvotaan uusi kenttä
             if lopetus_kenttä[0][1] in i or aloitus_kenttä[1] == lopetus_kenttä[0][1] :
-                print("Löytyi")
+
                 sql = f"SELECT name, ident FROM airport WHERE ident ='{kentät_icao[random.randint(0, 20)]}'"
                 curs.execute(sql)
                 aloitus_kenttä = curs.fetchall()
