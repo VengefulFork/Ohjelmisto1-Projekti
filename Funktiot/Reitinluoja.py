@@ -33,10 +33,35 @@ def reitinluoja ():
 
     curs.execute(sql_lopetus)
     lopetus_kenttä = curs.fetchall()
-    # Testausta varten
-    # for i in aloitus_kenttä :
-    #     print(f"Pelaaja aloitus kenttäsi on {i[0]}")
-    # for a in lopetus_kenttä :
-    #     print(f"Ja Maalisi on {a[0]}. \nOnnea matkaan")
+
+
+    testaus = True
+    while testaus :
+        # Haetaan aloituskentällä olevat yhteydet
+        sql_testaus1 = f"SELECT lopetuspiste FROM airport, yhteys WHERE airport.ident = yhteys.aloituspiste AND ident = '{aloitus_kenttä[1]}'"
+        sql_testaus2 = f"SELECT aloituspiste FROM airport, yhteys WHERE airport.ident = yhteys.lopetuspiste AND ident = '{aloitus_kenttä[1]}'"
+        curs.execute(sql_testaus1)
+        testaus_yhteydet = curs.fetchall()
+        curs.execute(sql_testaus2)
+        testaus_yhteydet.extend(curs.fetchall())
+
+        # Käydään läpi kaikki aloitus kentällä olevat yhteydet
+        for i in testaus_yhteydet :
+            # Jos aloitus kenttältä on yhteys lopetus kentälle arvotaan uusi aloitus kenttä tai jos ne ovat sama kenttä arvotaan uusi kenttä
+            if lopetus_kenttä[0][1] in i or aloitus_kenttä[1] == lopetus_kenttä[0][1] :
+                print("Löytyi")
+                sql = f"SELECT name, ident FROM airport WHERE ident ='{kentät_icao[random.randint(0, 20)]}'"
+                curs.execute(sql)
+                aloitus_kenttä = curs.fetchall()
+                for a in aloitus_kenttä :
+                    aloitus_kenttä = a
+
+                break
+            # Jos lopetus kenttä ei ole aloitus kentän yhteyksissä rikotaan silmukka
+            if lopetus_kenttä[0][1] not in i :
+
+                testaus = False
+        continue
+
     return aloitus_kenttä , lopetus_kenttä
 
