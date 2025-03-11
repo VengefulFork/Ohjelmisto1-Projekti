@@ -8,11 +8,12 @@ lentokonetyypit = [
         "poltoaineen_kulutus_kg/km": 3.49
     },
     {
-        "malli": "Airbus A320",
-        "valmistaja": "Airbus",
-        "matkustajamaara": 180,
-        "kantama_km": 6150,
-        "max_nopeus_kmh": 840
+        "malli": "Dash 8 Q400",
+        "valmistaja": "De Havilland",
+        "matkustajamaara": 82,
+        "kantama_km": 2040,
+        "max_nopeus_kmh": 600,
+        "poltoaineen_kulutus_kg/km": 1.83
     }
 ]
 # for kone in lentokonetyypit:
