@@ -28,6 +28,7 @@ def reitinluoja ():
 
     curs.execute(sql_aloitus)
     aloitus_kenttä = curs.fetchall()
+    # Käydään läpi sql haun palauttama lista joka sisältää monikon ja määritellään aloitus_kenttä täksi monikoksi
     for i in aloitus_kenttä :
         aloitus_kenttä = i
 
@@ -53,6 +54,7 @@ def reitinluoja ():
                 sql = f"SELECT name, ident FROM airport WHERE ident ='{kentät_icao[random.randint(0, 20)]}'"
                 curs.execute(sql)
                 aloitus_kenttä = curs.fetchall()
+                # Käydään läpi sql haun palauttama lista joka sisältää monikon ja määritellään aloitus_kenttä täksi monikoksi
                 for a in aloitus_kenttä :
                     aloitus_kenttä = a
 

@@ -6,21 +6,26 @@ from Etäisyydet import koordinaatit
 from Matkanlaskija import lennon_tiedot_laskin
 from komennot import komennot
 from kartta import kartta
+from tarina import tarina
+from clear import clear
 
 def pääohjelma () :
-    maali = reitinluoja()[1]
-    pelaajan_sijainti = reitinluoja()[0]
+    koko_reitti = reitinluoja()
+    maali = koko_reitti[1]
+    pelaajan_sijainti = koko_reitti[0]
+    intro = (f"Aloitat kentältä {pelaajan_sijainti[0]},{pelaajan_sijainti[1]} onnea matkaan Agentti!").replace("Airport", "")
     kokonaan_kuljettu_matka = 0
     kokonais_aika = 0
     kokonais_co2 = 0
 
 
 
-    pelaajan_nimi = input("Anna nimesi = ")
-    aloitus = input(f"Hei, {pelaajan_nimi}! Haluatko ottaa tehtävän vastaan jos haluat syotä 1 jos et syötä 2 = ").replace(" ", "")
+
+    aloitus = tarina(maali)
 
     if aloitus == "1" :
 
+        print(intro)
         while maali[0][1] != pelaajan_sijainti[1] :
 
                 komennot()
@@ -38,15 +43,21 @@ def pääohjelma () :
 
                     print(f"\nMatkasi kentältä {pelaajan_vanha_sijainti[0]} kentälle {pelaajan_sijainti[0]}\n"
                           f"oli {matka} kilometria ja valitsemallasi koneella {pelaajan_kone['malli']} siihen meni {lennon_tiedot[0]}"
-                          f" minuuttia ja tuotti {lennon_tiedot[1]} kiloa hiilidioksidia")
+                          f" minuuttia josta {lennon_tiedot[2]} minuuttia meni kentällä ja tuotti {lennon_tiedot[1]} kiloa hiilidioksidia")
 
                     kokonaan_kuljettu_matka += matka
                     kokonais_aika += lennon_tiedot[0]
                     kokonais_co2  += lennon_tiedot[1]
                 elif komento == "3" :
                     print(f"Maalisi on {maali[0][0]}, {maali[0][1]}")
-        print("\nTrumpetit soi koska voitit pelin")
+                elif komento == "4" :
+                    print(f"Olet matkustanut {kokonais_aika} minuuttia, {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia")
+                elif komento == "5" :
+                    clear()
 
+
+        print("\nTrumpetit soi koska voitit pelin")
+        print(f"Matkasi kesti {kokonais_aika} minuuttia, ja sen pituus oli {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia")
     elif aloitus == "2" :
         print("Olemme pettyneitä :(")
     return
