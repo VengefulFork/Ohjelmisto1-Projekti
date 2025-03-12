@@ -6,7 +6,7 @@ from Etäisyydet import koordinaatit
 from Matkanlaskija import lennon_tiedot_laskin
 from komennot import komennot
 from kartta import kartta
-from tarina import tarina
+from tarina import tarina, info
 from clear import clear
 
 def pääohjelma () :
@@ -54,7 +54,7 @@ def pääohjelma () :
                 elif komento == "4" :
                     print(f"Olet matkustanut {kokonais_aika} minuuttia, {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia")
                 elif komento == "5" :
-                    clear()
+                    info()
 
 
         print("\nTrumpetit soi koska voitit pelin")
