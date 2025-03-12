@@ -21,8 +21,11 @@ def koordinaatit (pelaajan_vanha_sijainti, pelaajan_sijainti):
     curs.execute(sql2)
     tulos2 = curs.fetchall()
     k_etäisyys = round(distance.distance(tulos, tulos2 ).km)
+    matka = 0
+    u_matka = matka + k_etäisyys
 
-    return k_etäisyys
+    return k_etäisyys, u_matka, tulos
+
 
 # pelaajan_sijainti = ["OK", "ESSA"]
 #

@@ -1,6 +1,10 @@
 
 import mariadb
 import random
+from Etäisyydet import u_matka
+from Reitinluoja import lopetus_kenttä
+from Lentäminen import pelaajan_uusi_sijainti
+
 
 tk_yhteys = mariadb.connect(
         host='localhost',
@@ -13,15 +17,15 @@ tk_yhteys = mariadb.connect(
 
 def lopetus ():
     kentät_icao = ("EFHK","ESSA")
-    lopetus_kenttä = kentät_icao[random.randint(0, 1)]
-    sql_lopetus = f"SELECT name, ident FROM airport WHERE ident = '{lopetus_kenttä}'"
+    lopetus_k = kentät_icao[random.randint(0, 1)]
+    sql_lopetus = f"SELECT name, ident FROM airport WHERE ident = '{lopetus_k}'"
 
     curs = tk_yhteys.cursor()
 
     curs.execute(sql_lopetus)
-    lopetus_kenttä = curs.fetchall()
+    lopetus_k = curs.fetchall()
 
-    return lopetus_kenttä
+    return lopetus_k
 
 
 
@@ -35,31 +39,27 @@ vlong_distance = 25000
 
 tpoints = 25
 
-distance = 2500
-
 points = 0
 
 
-if distance <= optimal_distance:
+if u_matka <= optimal_distance:
     points = tpoints * 4
 
-if optimal_distance < distance <= medium_distance:
+if optimal_distance < u_matka <= medium_distance:
     points = tpoints * 3
 
-if medium_distance < distance <= long_distance:
+if medium_distance < u_matka <= long_distance:
     points = tpoints * 2
 
-if long_distance < distance <= vlong_distance:
+if long_distance < u_matka <= vlong_distance:
     points = tpoints
 
-if distance > vlong_distance:
+if u_matka > vlong_distance:
     points = 0
 
 
-pelaajan_sijainti = "ESSA"
-
-if lopetus_kenttä == "ESSA":
+if lopetus_kenttä == pelaajan_uusi_sijainti:
     print("Olet saapunut maaliin!")
-    print("Matkustit yhteensä n.",distance,"km.")
+    print("Matkustit yhteensä n.",u_matka,"km.")
     print("Sait",points, "pistettä!")
 
