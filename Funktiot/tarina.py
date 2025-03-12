@@ -14,5 +14,10 @@ def tarina (maali) :
             print("Virheellinen komento kokeile uudestaan")
     return komento
 
+def info ():
+    print(f"Tavoitteenasi on saavuttaa lentokenttä jolla Tohtori Palmu piileskelee."
+          f"\nKun saavutat kohteesi saat pisteitä käyttämäsi ajan ja tuottamasi hiilidioksidin perusteella"
+          f"\nEli harkitse reittiäsi ja millä koneella lennät")
+    return
 
 
