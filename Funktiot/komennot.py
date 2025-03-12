@@ -2,7 +2,7 @@
 def komennot ():
 
     komennot = [("Kartta"), ("Lennä seuraavalle kentälle"), ("Tarkista maalisi"), ("Tarkista kulunut aika, käytetty hiilidioksidi ja kuljettu matka"),
-                ("Info")]
+                ("Info"), ("Tyhjennä konsoli")]
     komennon_numero = 0
     print("\nMahdolliset komennot")
     for a in komennot :

@@ -55,7 +55,10 @@ def pääohjelma () :
                     print(f"Olet matkustanut {kokonais_aika} minuuttia, {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia")
                 elif komento == "5" :
                     info()
-
+                elif komento == "6" :
+                    clear()
+                else :
+                    print("Virheellinen komento kokeile uudestaan")
 
         print("\nTrumpetit soi koska voitit pelin")
         print(f"Matkasi kesti {kokonais_aika} minuuttia, ja sen pituus oli {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia")
