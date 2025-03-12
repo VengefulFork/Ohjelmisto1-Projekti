@@ -10,6 +10,7 @@ from tarina import tarina
 from clear import clear
 
 def pääohjelma () :
+    # Pääohjelmassa tarvittavia muuttujia
     koko_reitti = reitinluoja()
     maali = koko_reitti[1]
     pelaajan_sijainti = koko_reitti[0]
