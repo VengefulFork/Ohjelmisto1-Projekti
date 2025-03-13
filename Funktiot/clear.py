@@ -1,6 +1,6 @@
 from os import system, name
 
-
+# HUOM tämä on kopioitu stackoverflowsta suoraan koska oli sen verran hyvä ja tekee juuri mitä toivottiin
 # define our clear function
 def clear():
     # for windows the name is 'nt'

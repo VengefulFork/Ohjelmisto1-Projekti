@@ -8,23 +8,27 @@ from komennot import komennot
 from kartta import kartta
 from tarina import tarina, info
 from clear import clear
+from tallennin import tk_tallenin, edelliset_pelit
+from Pisteytys import piste_laskuri
 
 def pääohjelma () :
     # Pääohjelmassa tarvittavia muuttujia
     koko_reitti = reitinluoja()
     maali = koko_reitti[1]
     pelaajan_sijainti = koko_reitti[0]
-    intro = (f"Aloitat kentältä {pelaajan_sijainti[0]},{pelaajan_sijainti[1]} onnea matkaan Agentti!").replace("Airport", "")
+    ensimmäinen_kenttä = pelaajan_sijainti
+    intro = (f"Aloitat kentältä {pelaajan_sijainti[0]},{pelaajan_sijainti[1]} onnea matkaan Agentti!")
     kokonaan_kuljettu_matka = 0
     kokonais_aika = 0
     kokonais_co2 = 0
 
 
 
+    edelliset_pelit()
 
-    aloitus = tarina(maali)
+    aloitus_pelaajan_nimi = tarina(maali)
 
-    if aloitus == "1" :
+    if aloitus_pelaajan_nimi[0] == "1" :
 
         print(intro)
         while maali[0][1] != pelaajan_sijainti[1] :
@@ -33,19 +37,20 @@ def pääohjelma () :
                 komento = input("Anna haluamasi komennon numero = ").replace(" ", "")
                 if komento == "1" :
                     kartta()
+                # Pelaajan siirtämiseen tarvittavien funktioiden kutsuminen
                 elif komento == "2" :
                     pelaajan_vanha_sijainti = pelaajan_sijainti
                     pelaajan_sijainti = lentäminen(pelaajan_sijainti)
 
                     pelaajan_kone = koneen_valitsin(lentokonetyypit)
 
-                    matka = koordinaatit(pelaajan_vanha_sijainti, pelaajan_sijainti)
+                    matka = koordinaatit(pelaajan_vanha_sijainti, pelaajan_sijainti)[0]
                     lennon_tiedot = lennon_tiedot_laskin(matka, pelaajan_kone)
 
                     print(f"\nMatkasi kentältä {pelaajan_vanha_sijainti[0]} kentälle {pelaajan_sijainti[0]}\n"
                           f"oli {matka} kilometria ja valitsemallasi koneella {pelaajan_kone['malli']} siihen meni {lennon_tiedot[0]}"
                           f" minuuttia josta {lennon_tiedot[2]} minuuttia meni kentällä ja tuotti {lennon_tiedot[1]} kiloa hiilidioksidia")
-
+                    # Lisätään matkan data muuttujiin myöhempää käyttöä varten
                     kokonaan_kuljettu_matka += matka
                     kokonais_aika += lennon_tiedot[0]
                     kokonais_co2  += lennon_tiedot[1]
@@ -59,12 +64,15 @@ def pääohjelma () :
                     clear()
                 else :
                     print("Virheellinen komento kokeile uudestaan")
-
-        print("\nTrumpetit soi koska voitit pelin")
-        print(f"Matkasi kesti {kokonais_aika} minuuttia, ja sen pituus oli {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia")
-    elif aloitus == "2" :
+        pisteet = piste_laskuri(kokonaan_kuljettu_matka, kokonais_aika, kokonais_co2)
+        print(f"\nSaavuit kohteeseesi {maali[0][0]} ja Tohtori Palmu on jälleen vangittu. Onnittelumme Agentti {aloitus_pelaajan_nimi[1]}.")
+        print(f"\nMatkasi kesti {kokonais_aika} minuuttia, ja sen pituus oli {kokonaan_kuljettu_matka} km ja olet tuottanut {kokonais_co2} kg hiilidioksidia. Sait {pisteet} pistettä.")
+        # Kutsutaan tietokantaan tallentamiseen tarkoitettu funktio
+        tk_tallenin(aloitus_pelaajan_nimi, ensimmäinen_kenttä, maali, kokonaan_kuljettu_matka, kokonais_aika, kokonais_co2, pisteet)
+    elif aloitus_pelaajan_nimi[1] == "2" :
         print("Olemme pettyneitä :(")
     return
+
 pääohjelma()
 
 

@@ -46,7 +46,7 @@ def lentäminen(pelaajan_sijainti):
             print(f"\nOlet kentällä {pelaajan_sijainti[0]}, {pelaajan_sijainti[1]} josta valittavat yhteydet ovat : ")
             for rivi in kentät_nimet:
                 print(f"\nKentän nimi on {rivi[0]} ja ICAO-koodi: {rivi[1]}")
-
+        #Pyydetään käyttäjältä kenttä jolle haluaa lentää ja poistetaan siitä vielä mahdolliset välilyönnit
         valittu_kenttä = input("\nAnna kentän ICAO-koodi jolle haluat lentää = ").upper().replace(" ", "")
         # Käydään läpi kaikki monikot jota lista kentät_nimet sisältää ja jos löydetään pelaajan syöttämä icao koodi
         # päivitetään pelaaja sijainti annettuun icao koodiin
